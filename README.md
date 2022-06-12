@@ -43,6 +43,8 @@ Ejercicios de evaluación práctica para ProContacto
 ![Screenshot del sub punto 3](./assets/ejer-2-3.png)
 
 4. ¿Qué diferencias se observan entre 1 y 3?
+ 
+    Como se puede observar, al realizar el segundo request GET, el mismo retorna además del contenido original, el contenido del body del request POST del segundo paso.   
 
 [← Volver](#ejercicios)
 ### Ejercicio 4
