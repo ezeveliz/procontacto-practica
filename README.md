@@ -156,43 +156,43 @@ URL del perfil de Trailhead: [https://trailblazer.me/id/ezeveliz](https://trailb
    
    Este objeto posee una relación Master-Detail con el objeto Quote, ya que en este están almacenados los posibles listados de productos a vender y posibles descuentos, Luego, también está relacionado con el Price Book porque del mismo se obtienen los precios de los artículos, también con Account para saber a quién le pertenece la oportunidad, con el Objeto Lead que origino la oportunidad. 
    * Campos: AccountId, AgeInDays, Amount, CampaignId, CloseDate, ConnectionReceivedId, ConnectionSentId, ContactId, ContractId, CurrencyIsoCode, Description, ExpectedRevenue, Fiscal, FiscalQuarter, FiscalYear, ForecastCategory, ForecastCategoryName, HasOpenActivity, HasOpportunityLineItem, HasOverdueTask, IqScore, IsClosed, IsDeleted, IsExcludedFromTerritory2Filter, IsPriorityRecord, IsSplit, IsWon, LastActivityDate, LastActivityInDays, LastAmountChangedHistoryId, LastCloseDateChangedHistoryId, LastReferencedDate, LastStageChangeDate, LastStageChangeInDays, LastViewedDate, LeadSource, Name, NextStep, OwnerId, PartnerAccountId, Pricebook2Id, PricebookId, Probability, PushCount, RecordTypeId, StageName, SyncedQuoteID, Territory2Id, TotalOpportunityQuantity y Type.
-6. Product
+5. Product
 
    El objeto Product representa un producto que vende la compañía.
 
    Este objeto no está relacionado con otros, sino que otros están relacionados con él, como por ejemplo Case y Asset. Se relaciona mediante una tabla intermedia con el objeto Price Book y con el objeto Opportunity.
    * Campos: BillingPolicyId, CanUseQuantitySchedule, CanUseRevenueSchedule, ConnectionReceivedId, ConnectionSentId, CurrencyIsoCode, Description, DisplayUrl, ExternalDataSourceId, ExternalId, Family, IsActive, IsArchived, IsDeleted, LastReferencedDate, LastViewedDate, Name, NumberOfQuantityInstallments, NumberOfRevenueInstallments, ProductClass, ProductCode, QuantityInstallmentPeriod, QuantityScheduleType, QuantityUnitOfMeasure, RecalculateTotalPrice, RevenueInstallmentPeriod, RevenueScheduleType, StockKeepingUnit, Type y TaxPolicyId.
-7. Price Book
+6. Price Book
 
    El objeto Price Book representa una lista de precios de los distintos productos que vende la organización, pueden existir diferentes dedicadas a diferentes propósitos, como por ejemplo dedicadas a distintos canales de venta, mercados, con distintos descuentos, etc. La entrada de cada lista de precios se encuentra almacenada en el objeto Price Book Entry.
    
    Está relacionado con el objeto: Opportunity.
    * Campos: Description, IsActive, IsArchived, IsDeleted, IsStandard, LastReferencedDate, LastViewedDate, Name, ValidFrom y ValidTo.
-8. Quote
+7. Quote
 
    El objeto Quote hace de detail en una relación Master-Detail con el objeto Opportunity, el mismo es una colección de productos o servicios, con los precios propuestos, posibles descuentos, subtotales y totales, se pueden crear desde el objeto Opportunity y luego ser enviados como PDF al potencial cliente.
 
    Está relacionado con los objetos: Account, Contact, Opportunity, Pricebook.
    * Campos: AccountId, AdditionalAddress, AdditionalCity, AdditionalCountry, AdditionalCountryCode, AdditionalLatitude, AdditionalLongitude, AdditionalName, AdditionalPostalCode, AdditionalState, AdditionalStateCode, AdditionalStreet, BillingAddress, BillingCity, BillingCountry, BillingCountryCode, BillingLatitude, BillingLongitude, BillingName, BillingPostalCode, BillingState, BillingStateCode, BillingStreet, CalculationStatus, CanCreateQuoteLineItems, ContactId, ContractId, CurrencyIsoCode, Description, Discount, Email, ExpirationDate, Fax, IsSyncing, LastReferencedDate, LastViewedDate, LineItemCount, Name, OpportunityId, Phone, Pricebook2Id, QuoteNumber, QuoteToAddress, QuoteToCity, QuoteToCountry, QuoteToLatitude, QuoteToLongitude, QuoteToName, QuoteToPostalCode, QuoteToState, QuoteToStreet, RecordTypeID, ShippingAddress, ShippingCity, ShippingCountry, ShippingCountryCode, ShippingHandling, ShippingLatitude, ShippingLongitude, ShippingName, ShippingPostalCode, ShippingState, ShippingStateCode, ShippingStreet, Status, Subtotal, Tax, TotalPrice, TotalPriceWithTax y TotalTaxAmount. 
-9. Asset
+8. Asset
 
    El objeto Asset representa un artículo de valor comercial como por ejemplo un producto vendido por la compañía o un competidor, que un cliente compró. Poseen número de serie, fecha de compra y otros datos relacionados con la venta individual. Se pueden crear árboles de jerarquía para representar assets compuestos por otros assets.
 
    Está relacionado con los objetos: Account, Contact, Asset(en caso de assets compuestos existen 2 referencias, una apunta a su padre directo y la otra apunta al asset que representa la raíz del árbol).
    * Campos: AccountId, AssetLevel, AssetProvidedById, AssetServicedById, Availability, AverageUptimePerDay, ConsequenceOfFailure, ContactId, CurrentAmount, CurrentLifecycleEndDate, CurrentMrr, CurrentQuantity, Description, DigitalAssetStatus, ExternalIdentifier, HasLifecycleManagement, InstallDate, IsCompetitorProduct, IsInternal, LastReferencedDate, LastViewedDate, LifecycleEndDate, LifecycleStartDate, LocationId, ManufactureDate, Name, OwnerId, ParentId, Price, Product2Id, ProductCode, ProductDescription, ProductFamily, PurchaseDate, Quantity, Reliability, RenewalTerm, RenewalTermUnit, RootAssetId, SerialNumber, Status, StatusReason, StockKeepingUnit, SumDowntime, SumUnplannedDowntime, TotalLifecycleAmount, UptimeRecordEnd, UptimeRecordStart, UsageEndDate y Uuid.
 
-10. Case
+9. Case
 
     El objeto Case representa algún problema, pregunta o retroalimentación(o comentario) y sus datos asociados como puede ser el tiempo que tarda en resolverse, comentarios, la cuenta relacionada que lo originó, el encargado del mismo, las actividades necesarias para solucionarlo o los métodos de contacto con el que lo originó.
 
     Está relacionado con los objetos: Account, Contact, Case(para el caso en que se unan(merge) dos cases diferentes o en el caso de que uno esté relacionado con otro)
      * Campos: AccountId, BusinessHoursId, Comments, CaseNumber, ClosedDate, CommunityId, ConnectionReceivedId, ConnectionSentId, ContactEmail, ContactFax, ContactId, ContactMobile, ContactPhone, CreatorFullPhotoUrl, CreatorName, CreatorSmallPhotoUrl, Description, FeedItemId, HasCommentsUnreadByOwner, HasSelfServiceComments, IsClosed, IsClosedOnCreate, IsDeleted, IsEscalated, IsSelfServiceClosed, IsStopped, IsVisibleInSelfService, Language, LastReferencedDate, LastViewedDate, MasterRecordId, Origin, OwnerId, ParentId, Priority, QuestionId, Reason, RecordTypeId, SlaStartDate, SourceId, Status, StopStartDate, Subject, SuppliedCompany, SuppliedEmail, SuppliedName, SuppliedPhone y Type.
 
-11. Article
+10. Article
 
-   Con respecto a este objeto, encontré referencias al mismo hasta la API versión 44.0(a partir de la misma se encuentra como "Salesforce Knowledge Objects") y no sería un objeto único, sino un conjunto de objetos(donde el objeto principal es KnowledgeArticle y se relaciona a través de una tabla intermedia llamada CaseArticle con el objeto Case) para representar información sobre los productos y servicios de la compañía y hacerlos disponibles en una base de conocimientos(KB). 
+    Con respecto a este objeto, encontré referencias al mismo hasta la API versión 44.0(a partir de la misma se encuentra como "Salesforce Knowledge Objects") y no sería un objeto único, sino un conjunto de objetos(donde el objeto principal es KnowledgeArticle y se relaciona a través de una tabla intermedia llamada CaseArticle con el objeto Case) para representar información sobre los productos y servicios de la compañía y hacerlos disponibles en una base de conocimientos(KB). 
    
-   Permite versionar la información disponible en los mismos, categorizarla según el tema al que hace referencia, asignarla a distintos canales(clientes, KB pública, etc.) y utilizar un ciclo de publicación con distintos estados, como por ejemplo Draft para indicar que aún está en construcción, Online para indicar que está publicado y Archived cuando su contenido ya no aplica. 
+    Permite versionar la información disponible en los mismos, categorizarla según el tema al que hace referencia, asignarla a distintos canales(clientes, KB pública, etc.) y utilizar un ciclo de publicación con distintos estados, como por ejemplo Draft para indicar que aún está en construcción, Online para indicar que está publicado y Archived cuando su contenido ya no aplica. 
 
 ![Salesforce DER](./assets/ejer-5.png)
 
@@ -256,22 +256,23 @@ URL del perfil de Trailhead: [https://trailblazer.me/id/ezeveliz](https://trailb
    Un Sandbox es un ambiente de desarrollo independiente del de producción que permite probar nuevas configuraciones, código o automatizaciones sin afectar los datos en producción.
 10. ¿Qué es un ChangeSet?
 
-   Un ChangeSet es un objeto que contiene información y permite enviar los cambios realizados en un Sandbox al ambiente de producción, solo permite enviar modificaciones realizadas a través de menu Setup de la organización, no records nuevos. 
+    Un ChangeSet es un objeto que contiene información y permite enviar los cambios realizados en un Sandbox al ambiente de producción, solo permite enviar modificaciones realizadas a través de menu Setup de la organización, no records nuevos.
 11. ¿Para qué sirve el import Wizard de Salesforce?
 
-   El import Wizard se utiliza para importar datos externos a la organización y asignárselos tanto a los objetos standard como a los custom, se puede importar hasta un límite de 50.000 records a la vez.
+    El import Wizard se utiliza para importar datos externos a la organización y asignárselos tanto a los objetos standard como a los custom, se puede importar hasta un límite de 50.000 records a la vez.
 12. ¿Para qué sirve la funcionalidad Web to Lead?
 
-   La funcionalidad Web to Lead sirve para transformar a los visitantes de los sitios webs en posibles Leads, o sea, posibles clientes, ventas o cuentas nuevas. 
+    La funcionalidad Web to Lead sirve para transformar a los visitantes de los sitios webs en posibles Leads, o sea, posibles clientes, ventas o cuentas nuevas. 
 13. ¿Para qué sirve la funcionalidad Web to Case?
 
-   La funcionalidad Web to Case permite iniciar Cases(ver ejercicio 5) desde la web recogiendo información suministrada por los clientes mismos.   
+    La funcionalidad Web to Case permite iniciar Cases(ver ejercicio 5) desde la web recogiendo información suministrada por los clientes mismos.
 14. ¿Para qué sirve la funcionalidad Omnichannel?
-   
-   La funcionalidad Omnichannel permite al servicio al cliente mantener una interacción con el cliente desde un mismo lugar sin importar el método preferido de contacto por el mismo, ya sea mail, SMS, llamadas, etc. 
+
+    La funcionalidad Omnichannel permite al servicio al cliente mantener una interacción con el cliente desde un mismo lugar sin importar el método preferido de contacto por el mismo, ya sea mail, SMS, llamadas, etc. 
 15. ¿Para qué sirve la funcionalidad Chatter?
    
-   La funcionalidad Chatter es una herramienta colaborativa integrada en salesforce que permite por ejemplo, realizar comentarios, subir archivos, publicar encuestas, publicar estados, etc. en una especie de feed sobre un record de un objeto dado. 
+    La funcionalidad Chatter es una herramienta colaborativa integrada en salesforce que permite por ejemplo, realizar comentarios, subir archivos, publicar encuestas, publicar estados, etc. en una especie de feed sobre un record de un objeto dado. 
+
 #### Conceptos Generales
 1. ¿Qué significa SaaS?
 
@@ -304,19 +305,19 @@ URL del perfil de Trailhead: [https://trailblazer.me/id/ezeveliz](https://trailb
    Un KPI es una métrica/medida del nivel del rendimiento de un proceso. El valor del indicador está directamente relacionado con un objetivo fijado previamente y normalmente se expresa en valores porcentuales
 10. ¿Qué es una API y en qué se diferencia de una Rest API?
 
-   Una API es sencillamente una interfaz que sirve para exponer las funcionalidades y la manera en como interactuar con un servicio web dado. En cambio, una API REST es una API, pero que sigue los lineamientos de diseño establecidos por REST. 
+    Una API es sencillamente una interfaz que sirve para exponer las funcionalidades y la manera en como interactuar con un servicio web dado. En cambio, una API REST es una API, pero que sigue los lineamientos de diseño establecidos por REST. 
 11. ¿Qué es un Proceso Batch?
 
-   Un proceso Batch es un proceso que corre asincrónicamente o sin intervención del usuario, también puede ocurrir cada ciertos intervalos de tiempo predefinidos. Se utiliza para ejecutar tareas repetitivas y que pueden llegar a conllevar una carga sobre el sistema que si se efectuara sincrónicamente podría llegar a enlentecer el sistema. 
+    Un proceso Batch es un proceso que corre asincrónicamente o sin intervención del usuario, también puede ocurrir cada ciertos intervalos de tiempo predefinidos. Se utiliza para ejecutar tareas repetitivas y que pueden llegar a conllevar una carga sobre el sistema que si se efectuara sincrónicamente podría llegar a enlentecer el sistema. 
 12. ¿Qué es Kanban?
 
-   Kanban es una metodología para administrar el desarrollo de procesos utilizando una tabla con varias columnas entre las que se pueden encontrar la lista de tareas pendientes(o To Do), la lista de tareas en progreso(o In Progress) y la lista de tareas terminadas(o Done). Al comienzo del ciclo de desarrollo se define el backlog de tareas a realizar y se agregan a la columna de To Do, a medida que se comience a trabajar en las mismas se mueven a la columna de In Progress, y finalmente cuando son concluidas se mueven a la columna de Done.
+    Kanban es una metodología para administrar el desarrollo de procesos utilizando una tabla con varias columnas entre las que se pueden encontrar la lista de tareas pendientes(o To Do), la lista de tareas en progreso(o In Progress) y la lista de tareas terminadas(o Done). Al comienzo del ciclo de desarrollo se define el backlog de tareas a realizar y se agregan a la columna de To Do, a medida que se comience a trabajar en las mismas se mueven a la columna de In Progress, y finalmente cuando son concluidas se mueven a la columna de Done.
 13. ¿Qué es un ERP?
    
-   ERP es una herramienta integrada para administrar los procesos de las distintas áreas del negocio, ya sea finanzas, contabilidad, producción, abastecimiento, etc.
+    ERP es una herramienta integrada para administrar los procesos de las distintas áreas del negocio, ya sea finanzas, contabilidad, producción, abastecimiento, etc.
 14. ¿Salesforce es un ERP?
 
-   Salesforce es un CRM, pero no puede considerarse un ERP porque le faltan herramientas necesarias para la administración de finanzas, abastecimiento y producción entre otras.
+    Salesforce es un CRM, pero no puede considerarse un ERP porque le faltan herramientas necesarias para la administración de finanzas, abastecimiento y producción entre otras.
 
 [← Volver](#ejercicios)
 ### Ejercicio 7
