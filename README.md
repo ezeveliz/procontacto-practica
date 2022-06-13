@@ -12,16 +12,94 @@ Ejercicios de evaluación práctica para ProContacto
 
 ### Ejercicio 2
 1. ¿Qué es un servidor HTTP?
+
+   Un servidor HTTP es un componente de software que implementa el protocolo de transferencia HTTP, el mismo es una especie de contrato o interfaz que deben cumplir los distintos servicios web para poder comunicarse y entenderse entre ellos. Permite recibir y responder a distintas consultas hechas en el formato específico definido anteriormente. 
 2. ¿Qué son los verbos HTTP? Mencionar los más conocidos
+   
+   Los verbos HTTP permiten definir distintas acciones a realizar sobre distintos recursos, como por ejemplo obtener los datos de una persona dado su ID, actualizar sus datos o eliminarla de un servicio.
+   * GET: Obtiene el o los recursos pedidos, no debería generar efectos colaterales(actualización de datos o eliminaciones).
+   * POST: Crea una nueva instancia del recurso dado con base en ciertos datos pasados por ejemplo en el body del request.
+   * PUT: Permite actualizar los datos asociados a un recurso dado, se debe pasar el conjunto de datos completo asociado al mismo, ya que se persistirá lo que se reciba, si el recurso pasado no existía se creará uno nuevo.
+   * PATCH: Permite actualizar los datos asociados a un recurso dado, a diferencia de PUT, no es necesario pasar todo el conjunto de datos, solo es necesario enviar los cambios.
+   * DELETE: Elimina el recurso asociado a los datos pasados, por ejemplo, el ID del mismo.
 3. ¿Qué es un request y un response en una comunicación HTTP? ¿Qué son los headers?
+
+   En el contexto de una comunicación HTTP, un request es una solicitud hecha a un servidor, la misma puede utilizar cualquiera de los verbos descritos en el punto anterior, y la response es la respuesta originada por el servidor al request hecho anteriormente. Los headers son sencillamente un mecanismo que permite intercambiar información adicional entre el cliente y el servidor durante los requests y las responses.  
 4. ¿Qué es un queryString? (En el contexto de una url)
+
+   Un queryString es una manera de agregar datos en una URL, se escriben a continuación de un signo de pregunta(?) y se agregan de a pares clave/valor con un igual(=) entre ambos, si se quieren agregar multiples, se debe incrustar un ampersand(&) entre cada par clave/valor. 
 5. ¿Qué es el responseCode? ¿Qué significado tiene los posibles valores devueltos?
+
+   Un responseCode es un código que indica si un request dado se logró completar con éxito o no(y en este caso donde está el error), el mismo es parte de la response. Existen cinco tipos de responseCodes agrupados en las siguientes clases:
+   * 100-199: Respuestas informativas
+   * 200-299: Respuestas correctas
+   * 300-399: Mensajes de redirección
+   * 400-499: Errores en el cliente que produjo el request
+   * 500-599: Errores en el servidor
+
+   > Si se recibe un código que no pertenece a ninguna de estas cinco clases, el mismo no forma parte del standard y es propio del código del servidor. 
 6. ¿Cómo se envía la data en un Get y cómo en un POST?
+   
+   En un GET, los datos viajan embebidos en la URL desde el cliente hacia el servidor, por ejemplo mediante un queryString, en el caso del POST, los mismos viajan en un campo del request llamado body, a diferencia de los requests GET, estos no pueden ser cacheados y no quedan en el historial del dispositivo.
 7. ¿Qué verbo http utiliza el navegador cuando accedemos a una página?
+
+   Al acceder a una página web, el navegador utiliza el verbo GET.
 8. Explicar brevemente qué son las estructuras de datos JSON y XML dando ejemplo de estructuras posibles.
+
+   Una estructura JSON es una estructura que sirve para el intercambio de datos, basada en un subset del lenguaje de programación JavaScript y formada básicamente por dos tipos de estructuras, siendo estas el array y pares clave/valor
+```json
+{
+    "personas": [
+       {
+          "nombre": "Ezequiel",
+          "edad": 27, 
+          "mascotas": [
+             {
+                "animal": "gato"
+             }
+          ]
+       },
+       {
+          "nombre": "Pepe",
+          "edad": 30,
+          "mascotas": []
+       }
+    ]
+}
+```
+   Las estructuras XML buscan el mismo objetivo que las estructuras JSON, el intercambio de información, pero se construyen utilizando un lenguaje similar al HTML mediante etiquetas que se abren y cierran.
+```xml 
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+  <personas>
+    <nombre>Ezequiel</nombre>
+    <edad>27</edad>
+    <mascotas>
+      <animal>gato</animal>
+    </mascotas>
+  </personas>
+  <personas>
+    <nombre>Pepe</nombre>
+    <edad>30</edad>
+    <mascotas/>
+  </personas>
+</root>
+```
 9. Explicar brevemente el estándar SOAP.
-10.	Explicar brevemente el estándar REST Full
-11.	¿Qué son los headers en un request? ¿Para qué se utiliza el key Content-type en un header?
+
+   SOAP significa "Simple Object Access Protocol" y define la estructura que debe tener el archivo XML que se utiliza para el intercambio de información o ejecución de procedimientos remotos entre dos servicios web. Cada uno de los intercambios se realiza utilizando mensajes SOAP, los cuales son archivos XML con la siguiente arquitectura:
+   1. Deben poseer una etiqueta raíz llamada envelope.
+   2. Pueden poseer una etiqueta opcional dentro de la anterior llamada header, la cual posee atributos que le indican al receptor como procesar el mensaje.
+   3. Deben poseer una etiqueta llamada body, a continuación del header si es que existe, en la cual se encuentra la información a solicitar o la respuesta a la información solicitada
+   4. Finalmente, es posible colocar una etiqueta llamada fault dentro del body obligatorio para indicar mensajes y códigos de error en caso de que ocurrieran durante el procesamiento de la solicitud
+   
+   Al haber un protocolo predefinido entre cliente y servidor, ambos quedan altamente acoplados, por lo que un cambio en cualquiera de los dos lados hará que la comunicación falle si no se sigue desde ambos lados.
+10. Explicar brevemente el estándar REST Full
+
+   REST significa "Representational State Transfer", a diferencia del protocolo SOAP, este es un estilo arquitectónico que define una manera standard de exponer los distintos componentes del sistema utilizando un recurso codificado mediante una URL al que puede acceder por ejemplo utilizando los verbos proveídos por el standard HTTP. Continuando con las diferencias, este no restringe el tipo de datos que se puede transmitir, siendo estos, JSON, XML, imágenes, videos, documentos, etc.  
+11. ¿Qué son los headers en un request? ¿Para qué se utiliza el key Content-type en un header?
+
+   Los headers son un mecanismo para enviar información del cliente al servidor en los requests y del servidor al cliente en las responses. Se forman utilizando un par clave/valor con dos puntos(:) entre ellos. El key Content-Type se utiliza para indicar el tipo de datos a recibir/enviar dependiendo de si se trata de un response o request, en el caso del primero indica por ejemplo el formato de video durante una descarga, en el caso de un request indica el tipo de dato enviado, por ejemplo un documento json.
 
 [← Volver](#ejercicios)
 ### Ejercicio 3
