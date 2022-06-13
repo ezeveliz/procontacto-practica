@@ -86,7 +86,17 @@ Ejercicios de evaluación práctica para ProContacto
 </root>
 ```
 9. Explicar brevemente el estándar SOAP.
+
+   SOAP significa "Simple Object Access Protocol" y define la estructura que debe tener el archivo XML que se utiliza para el intercambio de información o ejecución de procedimientos remotos entre dos servicios web. Cada uno de los intercambios se realiza utilizando mensajes SOAP, los cuales son archivos XML con la siguiente arquitectura:
+   1. Deben poseer una etiqueta raíz llamada envelope.
+   2. Pueden poseer una etiqueta opcional dentro de la anterior llamada header, la cual posee atributos que le indican al receptor como procesar el mensaje.
+   3. Deben poseer una etiqueta llamada body, a continuación del header si es que existe, en la cual se encuentra la información a solicitar o la respuesta a la información solicitada
+   4. Finalmente, es posible colocar una etiqueta llamada fault dentro del body obligatorio para indicar mensajes y códigos de error en caso de que ocurrieran durante el procesamiento de la solicitud
+   
+   Al haber un protocolo predefinido entre cliente y servidor, ambos quedan altamente acoplados, por lo que un cambio en cualquiera de los dos lados hará que la comunicación falle si no se sigue desde ambos lados.
 10. Explicar brevemente el estándar REST Full
+
+   REST significa "Representational State Transfer", a diferencia del protocolo SOAP, este es un estilo arquitectónico que define una manera standard de exponer los distintos componentes del sistema utilizando un recurso codificado mediante una URL al que puede acceder por ejemplo utilizando los verbos proveídos por el standard HTTP. Continuando con las diferencias, este no restringe el tipo de datos que se puede transmitir, siendo estos, JSON, XML, imágenes, videos, documentos, etc.  
 11. ¿Qué son los headers en un request? ¿Para qué se utiliza el key Content-type en un header?
 
    Los headers son un mecanismo para enviar información del cliente al servidor en los requests y del servidor al cliente en las responses. Se forman utilizando un par clave/valor con dos puntos(:) entre ellos. El key Content-Type se utiliza para indicar el tipo de datos a recibir/enviar dependiendo de si se trata de un response o request, en el caso del primero indica por ejemplo el formato de video durante una descarga, en el caso de un request indica el tipo de dato enviado, por ejemplo un documento json.
