@@ -96,7 +96,7 @@ Ejercicios de evaluación práctica para ProContacto
    Al haber un protocolo predefinido entre cliente y servidor, ambos quedan altamente acoplados, por lo que un cambio en cualquiera de los dos lados hará que la comunicación falle si no se sigue desde ambos lados.
 10. Explicar brevemente el estándar REST Full
 
-   REST significa "Representational State Transfer", a diferencia del protocolo SOAP, este es un estilo arquitectónico que define una manera standard de exponer los distintos componentes del sistema utilizando un recurso codificado mediante una URL al que puede acceder por ejemplo utilizando los verbos proveídos por el standard HTTP. Continuando con las diferencias, este no restringe el tipo de datos que se puede transmitir, siendo estos, JSON, XML, imágenes, videos, documentos, etc.  
+   REST significa "Representational State Transfer", a diferencia del protocolo SOAP, este es un estilo arquitectónico que define una manera standard de exponer los distintos componentes del sistema utilizando un recurso codificado mediante una URL al que puede acceder por ejemplo utilizando los verbos proveídos por el standard HTTP, no debe manejar estado y debe permitir el cacheo de las distintas responses. Continuando con las diferencias, este no restringe el tipo de datos que se puede transmitir, siendo estos, JSON, XML, imágenes, videos, documentos, etc.  
 11. ¿Qué son los headers en un request? ¿Para qué se utiliza el key Content-type en un header?
 
    Los headers son un mecanismo para enviar información del cliente al servidor en los requests y del servidor al cliente en las responses. Se forman utilizando un par clave/valor con dos puntos(:) entre ellos. El key Content-Type se utiliza para indicar el tipo de datos a recibir/enviar dependiendo de si se trata de un response o request, en el caso del primero indica por ejemplo el formato de video durante una descarga, en el caso de un request indica el tipo de dato enviado, por ejemplo un documento json.
@@ -204,9 +204,122 @@ URL del perfil de Trailhead: [https://trailblazer.me/id/ezeveliz](https://trailb
 
 [← Volver](#ejercicios)
 ### Ejercicio 6
+
+#### Soluciones de Salesforce
+1. ¿Qué es Salesforce?
+   
+   Salesforce es una plataforma que provee un conjunto de servicios para diseñar y distribuir software adaptado a cada requerimiento entre los cuales se incluyen:
+   * Módulos para administrar y gestionar las relaciones con los clientes y las ventas
+   * Módulos para administrar el marketing de la empresa
+   * Módulos de Business Intelligence
+   * Módulos para el trabajo con IoT
+   * etc.
+2. ¿Qué es Sales Cloud?
+
+   Sales Cloud es una plataforma CRM que permite gestionar las relaciones con el cliente, las ventas y el marketing.
+3. ¿Qué es Service Cloud?
+
+   Service Cloud es una plataforma para gestionar los sistemas de servicio al cliente y los equipos de soporte
+4. ¿Qué es Health Cloud?
+
+   Health Cloud es otro CRM, pero orientado a instituciones médicas, por lo que permite administrar las relaciones entre doctor y paciente, historiales médicos, etc.
+5. ¿Qué es Marketing Cloud?
+
+   Marketing cloud permite administrar todos los canales de marketing desde un único punto, ya sea web, mobil, email, redes sociales. Permite crear y administrar contenido para luego medir su impacto utilizando data analytics. 
+#### Funcionalidades de Salesforce
+1. ¿Qué es un RecordType?
+
+   Un RecordType es metadata sobre el tipo de un record, te permite ofrecer distintos procesos, valores de listas desplegables y vistas de páginas según el tipo de usuario que los esté visualizando.
+2. ¿Qué es un ReportType?
+
+   Un ReportType es un tipo de reporte en el que se puede configurar que información se quiere visualizar sobre un objeto dado, con la posibilidad de agregar sus objetos relacionados bajo ciertas condiciones configurables.
+3. ¿Qué es un Page Layout?
+
+   El Page Layout es el diseño de una página dada, en él se puede configurar como se ven los records, los diferentes campos, visibles o no, obligatorios o no, los botones. 
+4. ¿Qué es un Compact Layout?
+
+   Un Compact layout es una manera de visualizar los campos claves de un record dado en una vista más compacta, por ejemplo para los dispositivos móviles.
+5. ¿Qué es un Perfil?
+
+   Un Perfil es una colección de configuraciones que definen lo que un usuario dado puede hacer en la plataforma.
+6. ¿Qué es un Rol?
+
+   Un Rol controla el nivel de visibilidad que tiene un usuario sobre los datos de un objeto en la plataforma.
+7. ¿Qué es un Validation Rule?
+
+   Una Validation Rule es una regla que puede contener fórmulas o expresiones que evalúan los datos ingresados en el campo de un objeto dado y retornan verdadero o false según la validez de los mismos. 
+8. ¿Qué diferencia hay entre una relación Master Detail y Lookup?
+
+   La diferencia es que la relación Master-Detail es estricta, por consiguiente, si se elimina al Master de la relación, también se eliminan todos los objetos Detail, ya que su existencia no tienen sentido. En el caso de Lookup, ambos pueden existir sin necesidad del otro.
+9. ¿Qué es un Sandbox?
+
+   Un Sandbox es un ambiente de desarrollo independiente del de producción que permite probar nuevas configuraciones, código o automatizaciones sin afectar los datos en producción.
+10. ¿Qué es un ChangeSet?
+
+   Un ChangeSet es un objeto que contiene información y permite enviar los cambios realizados en un Sandbox al ambiente de producción, solo permite enviar modificaciones realizadas a través de menu Setup de la organización, no records nuevos. 
+11. ¿Para qué sirve el import Wizard de Salesforce?
+
+   El import Wizard se utiliza para importar datos externos a la organización y asignárselos tanto a los objetos standard como a los custom, se puede importar hasta un límite de 50.000 records a la vez.
+12. ¿Para qué sirve la funcionalidad Web to Lead?
+
+   La funcionalidad Web to Lead sirve para transformar a los visitantes de los sitios webs en posibles Leads, o sea, posibles clientes, ventas o cuentas nuevas. 
+13. ¿Para qué sirve la funcionalidad Web to Case?
+
+   La funcionalidad Web to Case permite iniciar Cases(ver ejercicio 5) desde la web recogiendo información suministrada por los clientes mismos.   
+14. ¿Para qué sirve la funcionalidad Omnichannel?
+   
+   La funcionalidad Omnichannel permite al servicio al cliente mantener una interacción con el cliente desde un mismo lugar sin importar el método preferido de contacto por el mismo, ya sea mail, SMS, llamadas, etc. 
+15. ¿Para qué sirve la funcionalidad Chatter?
+   
+   La funcionalidad Chatter es una herramienta colaborativa integrada en salesforce que permite por ejemplo, realizar comentarios, subir archivos, publicar encuestas, publicar estados, etc. en una especie de feed sobre un record de un objeto dado. 
+#### Conceptos Generales
+1. ¿Qué significa SaaS?
+
+   SaaS es un software(o aplicación final, por ejemplo Spotify) basado en la web que se ofrece como servicio por el que hay que pagar cada ciertos periodos regulares, pero ofrece la ventaja de que no hay que ocuparse del mantenimiento del mismo ni de la infraestructura que lo soporta.   
+2. ¿Salesforce es Saas?
+
+   Salesforce estaría más alineado dentro de la categoría de PaaS, ya que ofrece un servicio, pero el mismo no es final, porque uno lo debe adaptar a las necesidades, funcionalidades e identidad del negocio.
+3. ¿Qué significa que una solución sea Cloud?
+
+   El hecho de que una solución sea Cloud solo implica que la misma se ejecuta en uno o varios servidores ajenos a la empresa, existen soluciones tanto públicas como privadas(e hibridas), en las primeras diferentes aplicaciones de diferentes clientes corren en distintos entornos virtualizados en un mismo grupo de servidores, en la segunda alternativa todo un grupo de servidores es asignado al mismo cliente lo cual permite un mejor y más sencillo control.  
+4. ¿Qué significa que una solución sea On-Premise?
+
+   Para que una solución sea considerada On-Premise, la misma se debe ejecutar en servidores propios de la empresa y que funcionan dentro de los límites físicos de la misma. 
+5. ¿Qué es un pipeline de ventas?
+
+   Un pipeline de ventas es una representación gráfica en forma de proceso lineal de lo que debe hacer un representante de ventas para completar una operación.
+6. ¿Qué es un funnel de ventas?
+
+   Un funnel de ventas es el conjunto de pasos que una persona debe recorrer para convertirse finalmente en cliente.
+7. ¿Qué significa Customer Experience?
+
+   Customer Experience es el resultado de todas las interacciones entre el negocio y el cliente, dentro de las interacciones entra la navegación web, la charla con el servicio al cliente, la entrega del producto en tiempo y forma, el servicio post-venta, etc.
+8. ¿Qué significa omnicanalidad?
+
+   Omnicanalidad significa llegar a los clientes desde todos los medios de comunicación posibles para uqe la comunicación entre ambos puntos sea lo más orgánica y sencilla posible.
+9. ¿Qué significa que un negocio sea B2B?¿Qué significa que un negocio sea B2C?¿Qué es un KPI?
+
+   Un negocio B2B es un negocio cuyos clientes no son personas físicas finales, sino otros negocios, como por ejemplo la relación entre un productor y un distribuidor. Un negocio B2C es un negocio que a diferencia del anterior, sus clientes son personas físicas finales.
+   
+   Un KPI es una métrica/medida del nivel del rendimiento de un proceso. El valor del indicador está directamente relacionado con un objetivo fijado previamente y normalmente se expresa en valores porcentuales
+10. ¿Qué es una API y en qué se diferencia de una Rest API?
+
+   Una API es sencillamente una interfaz que sirve para exponer las funcionalidades y la manera en como interactuar con un servicio web dado. En cambio, una API REST es una API, pero que sigue los lineamientos de diseño establecidos por REST. 
+11. ¿Qué es un Proceso Batch?
+
+   Un proceso Batch es un proceso que corre asincrónicamente o sin intervención del usuario, también puede ocurrir cada ciertos intervalos de tiempo predefinidos. Se utiliza para ejecutar tareas repetitivas y que pueden llegar a conllevar una carga sobre el sistema que si se efectuara sincrónicamente podría llegar a enlentecer el sistema. 
+12. ¿Qué es Kanban?
+
+   Kanban es una metodología para administrar el desarrollo de procesos utilizando una tabla con varias columnas entre las que se pueden encontrar la lista de tareas pendientes(o To Do), la lista de tareas en progreso(o In Progress) y la lista de tareas terminadas(o Done). Al comienzo del ciclo de desarrollo se define el backlog de tareas a realizar y se agregan a la columna de To Do, a medida que se comience a trabajar en las mismas se mueven a la columna de In Progress, y finalmente cuando son concluidas se mueven a la columna de Done.
+13. ¿Qué es un ERP?
+   
+   ERP es una herramienta integrada para administrar los procesos de las distintas áreas del negocio, ya sea finanzas, contabilidad, producción, abastecimiento, etc.
+14. ¿Salesforce es un ERP?
+
+   Salesforce es un CRM, pero no puede considerarse un ERP porque le faltan herramientas necesarias para la administración de finanzas, abastecimiento y producción entre otras.
+
 [← Volver](#ejercicios)
 ### Ejercicio 7
-
 
 1. Consultar el ID haciendo un GET al Web Service del ejercicio 3
    ![ID procontacto](./assets/ejer-7-1.png)
