@@ -204,9 +204,92 @@ URL del perfil de Trailhead: [https://trailblazer.me/id/ezeveliz](https://trailb
 
 [← Volver](#ejercicios)
 ### Ejercicio 6
+
+#### Soluciones de Salesforce
+1. ¿Qué es Salesforce?
+   
+   Salesforce es una plataforma que provee un conjunto de servicios para diseñar y distribuir software adaptado a cada requerimiento entre los cuales se incluyen:
+   * Módulos para administrar y gestionar las relaciones con los clientes y las ventas
+   * Módulos para administrar el marketing de la empresa
+   * Módulos de Business Intelligence
+   * Módulos para el trabajo con IoT
+   * etc.
+2. ¿Qué es Sales Cloud?
+
+   Sales Cloud es una plataforma CRM que permite gestionar las relaciones con el cliente, las ventas y el marketing.
+3. ¿Qué es Service Cloud?
+
+   Service Cloud es una plataforma para gestionar los sistemas de servicio al cliente y los equipos de soporte
+4. ¿Qué es Health Cloud?
+
+   Health Cloud es otro CRM, pero orientado a instituciones médicas, por lo que permite administrar las relaciones entre doctor y paciente, historiales médicos, etc.
+5. ¿Qué es Marketing Cloud?
+
+   Marketing cloud permite administrar todos los canales de marketing desde un único punto, ya sea web, mobil, email, redes sociales. Permite crear y administrar contenido para luego medir su impacto utilizando data analytics. 
+#### Funcionalidades de Salesforce
+1. ¿Qué es un RecordType?
+
+   Un RecordType es metadata sobre el tipo de un record, te permite ofrecer distintos procesos, valores de listas desplegables y vistas de páginas según el tipo de usuario que los esté visualizando.
+2. ¿Qué es un ReportType?
+
+   Un ReportType es un tipo de reporte en el que se puede configurar que información se quiere visualizar sobre un objeto dado, con la posibilidad de agregar sus objetos relacionados bajo ciertas condiciones configurables.
+3. ¿Qué es un Page Layout?
+
+   El Page Layout es el diseño de una página dada, en él se puede configurar como se ven los records, los diferentes campos, visibles o no, obligatorios o no, los botones. 
+4. ¿Qué es un Compact Layout?
+
+   Un Compact layout es una manera de visualizar los campos claves de un record dado en una vista más compacta, por ejemplo para los dispositivos móviles.
+5. ¿Qué es un Perfil?
+
+   Un Perfil es una colección de configuraciones que definen lo que un usuario dado puede hacer en la plataforma.
+6. ¿Qué es un Rol?
+
+   Un Rol controla el nivel de visibilidad que tiene un usuario sobre los datos de un objeto en la plataforma.
+7. ¿Qué es un Validation Rule?
+
+   Una Validation Rule es una regla que puede contener fórmulas o expresiones que evalúan los datos ingresados en el campo de un objeto dado y retornan verdadero o false según la validez de los mismos. 
+8. ¿Qué diferencia hay entre una relación Master Detail y Lookup?
+
+   La diferencia es que la relación Master-Detail es estricta, por consiguiente, si se elimina al Master de la relación, también se eliminan todos los objetos Detail, ya que su existencia no tienen sentido. En el caso de Lookup, ambos pueden existir sin necesidad del otro.
+9. ¿Qué es un Sandbox?
+
+   Un Sandbox es un ambiente de desarrollo independiente del de producción que permite probar nuevas configuraciones, código o automatizaciones sin afectar los datos en producción.
+10. ¿Qué es un ChangeSet?
+
+   Un ChangeSet es un objeto que contiene información y permite enviar los cambios realizados en un Sandbox al ambiente de producción, solo permite enviar modificaciones realizadas a través de menu Setup de la organización, no records nuevos. 
+11. ¿Para qué sirve el import Wizard de Salesforce?
+
+   El import Wizard se utiliza para importar datos externos a la organización y asignárselos tanto a los objetos standard como a los custom, se puede importar hasta un límite de 50.000 records a la vez.
+12. ¿Para qué sirve la funcionalidad Web to Lead?
+
+   La funcionalidad Web to Lead sirve para transformar a los visitantes de los sitios webs en posibles Leads, o sea, posibles clientes, ventas o cuentas nuevas. 
+13. ¿Para qué sirve la funcionalidad Web to Case?
+
+   La funcionalidad Web to Case permite iniciar Cases(ver ejercicio 5) desde la web recogiendo información suministrada por los clientes mismos.   
+14. ¿Para qué sirve la funcionalidad Omnichannel?
+   
+   La funcionalidad Omnichannel permite al servicio al cliente mantener una interacción con el cliente desde un mismo lugar sin importar el método preferido de contacto por el mismo, ya sea mail, SMS, llamadas, etc. 
+15. ¿Para qué sirve la funcionalidad Chatter?
+   
+   La funcionalidad Chatter es una herramienta colaborativa integrada en salesforce que permite por ejemplo, realizar comentarios, subir archivos, publicar encuestas, publicar estados, etc. en una especie de feed sobre un record de un objeto dado. 
+#### Conceptos Generales
+1. ¿Qué significa SaaS?
+2. ¿Salesforce es Saas?
+3. ¿Qué significa que una solución sea Cloud?
+4. ¿Qué significa que una solución sea On-Premise?
+5. ¿Qué es un pipeline de ventas?
+6. ¿Qué es un funnel de ventas?
+7. ¿Qué significa Customer Experience?
+8. ¿Qué significa omnicanalidad?
+9. ¿Qué significa que un negocio sea B2B?¿Qué significa que un negocio sea B2C?¿Qué es un KPI?
+10. ¿Qué es una API y en qué se diferencia de una Rest API?
+11. ¿Qué es un Proceso Batch?
+12. ¿Qué es Kanban?
+13. ¿Qué es un ERP?
+14. ¿Salesforce es un ERP?
+
 [← Volver](#ejercicios)
 ### Ejercicio 7
-
 
 1. Consultar el ID haciendo un GET al Web Service del ejercicio 3
    ![ID procontacto](./assets/ejer-7-1.png)
