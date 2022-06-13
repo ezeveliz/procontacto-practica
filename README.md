@@ -206,4 +206,128 @@ URL del perfil de Trailhead: [https://trailblazer.me/id/ezeveliz](https://trailb
 ### Ejercicio 6
 [← Volver](#ejercicios)
 ### Ejercicio 7
+
+
+1. Consultar el ID haciendo un GET al Web Service del ejercicio 3
+   ![ID procontacto](./assets/ejer-7-1.png)
+2. Agregar un campo idprocontacto al objeto Contact
+   ![campo idprocontacto en el objeto Contact](./assets/ejer-7-2.png)
+3. Código de la solución
+
+Trigger
+```apex
+trigger PopulateContactsEmailTrigger on Contact (before insert, before update) {
+
+    if ((Trigger.isBefore && Trigger.isInsert) || 
+        (Trigger.isBefore && Trigger.isUpdate)) {
+            
+            List<Contact> toUpdate = new List<Contact>();
+            
+            for (Contact contact : Trigger.new) {
+                
+                // Valido que exista el campo idprocontacto__c, caso contrario no podré hallar el email correspondiente
+                if (contact.idprocontacto__c == null || contact.idprocontacto__c.length() == 0) {
+                    
+                    continue;
+                }
+                
+                toUpdate.add(contact);
+            }
+            
+            // Inicio un trabajo encolable para actualizar los emails asincrónicamente
+            System.enqueueJob(new ContactEmailUpdater(toUpdate));
+        }
+        
+}
+```
+
+Callout
+```apex
+public class ContactsCallout {
+
+    public static String getEmail(String idprocontacto) {
+        
+        // Intento obtener el email correspondiente al ID del contacto
+        Http http = new Http();
+        HttpRequest request = new HttpRequest();
+        request.setEndpoint('https://procontacto-reclutamiento-default-rtdb.firebaseio.com/contacts/' + idprocontacto + '.json');
+        request.setMethod('GET');
+        HttpResponse response = http.send(request);
+        
+        // Obtuve una respuesta correcta, ante cualquier error retorna un string vacío
+        if(response.getStatusCode() == 200) {
+            
+            Map<String, Object> results = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
+            
+            // El ID no existía
+            if (results == null) {
+                
+                return '';
+            }
+            
+            return (String) results.get('email');
+        }
+        return '';
+    }
+}
+```
+
+Async Job
+```apex
+/**
+ * Clase asincronica para actualizar los emails
+ */ 
+public class ContactEmailUpdater implements Queueable, Database.AllowsCallouts {
+    
+    private List<Contact> contacts;
+
+    public ContactEmailUpdater(List<Contact> myContacts) {
+        contacts = myContacts;
+    }
+    
+    public void execute(QueueableContext context) {
+        
+        // Lista de contactos para actualizar en batch
+        List<Contact> toUpdate = new List<Contact>();
+        
+        // Itero la lista de contactos buscando los emails correspondientes
+        for (Contact con: contacts) {
+            
+            // Obtengo el email correspondiente al id de procontacto
+            String email = ContactsCallout.getEmail(con.idprocontacto__c);
+            
+            /**
+             * Si no poseia email, y se pudo obtener un email correspondiente 
+             * al ID dado, lo agrego a la lista para actualizar
+             */  
+            if (con.Email == null && email.length() > 0) {
+                
+                con.Email = email;
+                toUpdate.add(con);
+                continue;
+            }
+            
+            /**
+             * Si el contacto ya poseía un email y se pudo encontrar un email 
+             * correspondiente al ID dado, valido que los dos emails disponibles 
+             * no sean iguales ya que si no lo hago y actualizo igualmente, se 
+             * genera una cadena infinta de procesos encolables
+             */ 
+            if (con.Email != null && con.Email.length() > 0 && 
+                email.length() > 0 && !con.Email.equals(email)) {
+                
+                con.Email = email;
+                toUpdate.add(con);
+            }
+            
+        }
+        
+        // Si habia algo para actualizar, actualizo
+        if (toUpdate.size() > 0) {
+            
+            update toUpdate;
+        }
+    }
+}
+```
 [← Volver](#ejercicios)
